@@ -9,15 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{3D3D6C45-58DA-4FD7-8E5A-C526AEE54436}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Api", "Core\Ecommerce.Api\Ecommerce.Api.csproj", "{A2AA87BF-A197-4DF4-A0A5-0B177817B954}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Domain", "Core\Ecommerce.Domain\Ecommerce.Domain.csproj", "{82D3EBBC-9D97-4E21-8125-F164B65526FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Infrastructure", "Infrastructure\Ecommerce.Infrastructure\Ecommerce.Infrastructure.csproj", "{551D7735-16E0-4964-8657-1FC0080109EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Infrastructure", "Infrastructure\Ecommerce.Infrastructure\Ecommerce.Infrastructure.csproj", "{551D7735-16E0-4964-8657-1FC0080109EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Persistence", "Infrastructure\Ecommerce.Persistence\Ecommerce.Persistence.csproj", "{C6228366-D6F8-423A-B7B5-4DD2BEF63123}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Persistence", "Infrastructure\Ecommerce.Persistence\Ecommerce.Persistence.csproj", "{C6228366-D6F8-423A-B7B5-4DD2BEF63123}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Api", "Presentation\Ecommerce.Api\Ecommerce.Api.csproj", "{A0DCB280-5DC3-48A0-A8A2-E2D817BF8EF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Api", "Presentation\Ecommerce.Api\Ecommerce.Api.csproj", "{A0DCB280-5DC3-48A0-A8A2-E2D817BF8EF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Application", "Core\Ecommerce.Application\Ecommerce.Application.csproj", "{6C49741B-B13D-41F8-B807-42A17CF75329}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A2AA87BF-A197-4DF4-A0A5-0B177817B954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2AA87BF-A197-4DF4-A0A5-0B177817B954}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2AA87BF-A197-4DF4-A0A5-0B177817B954}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2AA87BF-A197-4DF4-A0A5-0B177817B954}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82D3EBBC-9D97-4E21-8125-F164B65526FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{82D3EBBC-9D97-4E21-8125-F164B65526FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82D3EBBC-9D97-4E21-8125-F164B65526FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,16 +41,20 @@ Global
 		{A0DCB280-5DC3-48A0-A8A2-E2D817BF8EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0DCB280-5DC3-48A0-A8A2-E2D817BF8EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0DCB280-5DC3-48A0-A8A2-E2D817BF8EF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C49741B-B13D-41F8-B807-42A17CF75329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C49741B-B13D-41F8-B807-42A17CF75329}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C49741B-B13D-41F8-B807-42A17CF75329}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C49741B-B13D-41F8-B807-42A17CF75329}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A2AA87BF-A197-4DF4-A0A5-0B177817B954} = {9C5B3DCB-7DFA-45AE-86E6-129563B2F89D}
 		{82D3EBBC-9D97-4E21-8125-F164B65526FD} = {9C5B3DCB-7DFA-45AE-86E6-129563B2F89D}
 		{551D7735-16E0-4964-8657-1FC0080109EE} = {4B4AB845-F5DC-4D8A-AD1B-704048BFFDA0}
 		{C6228366-D6F8-423A-B7B5-4DD2BEF63123} = {4B4AB845-F5DC-4D8A-AD1B-704048BFFDA0}
 		{A0DCB280-5DC3-48A0-A8A2-E2D817BF8EF0} = {3D3D6C45-58DA-4FD7-8E5A-C526AEE54436}
+		{6C49741B-B13D-41F8-B807-42A17CF75329} = {9C5B3DCB-7DFA-45AE-86E6-129563B2F89D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFFF2510-01B1-4787-BAD4-0FF6C778F5A4}

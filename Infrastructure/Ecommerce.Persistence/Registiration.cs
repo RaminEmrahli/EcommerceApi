@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Ecommerce.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
+using Ecommerce.Application.Interfaces.Repositories;
+using Ecommerce.Persistence.Repositories;
 
 namespace Ecommerce.Persistence
 {
@@ -15,6 +17,8 @@ namespace Ecommerce.Persistence
         public static void AddPersistence(this IServiceCollection services,IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
         }
+       
     }
 }
