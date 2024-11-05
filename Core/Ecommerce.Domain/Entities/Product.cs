@@ -22,11 +22,11 @@ namespace Ecommerce.Domain.Entities
             Discount = discount;
         }
 
-        public required string Title { get; set; }
-        public required string Description { get; set; }
-        public required int BrandId { get; set; }
-        public required decimal Price { get; set; }
-        public required decimal Discount { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public int BrandId { get; set; }
+        public decimal Price { get; set; }
+        public decimal Discount { get; set; }
         public Brand Brand { get; set; }
         public ICollection<ProductCategory> ProductCategories { get; set; }
         //public required string ImagePath { get; set; }
