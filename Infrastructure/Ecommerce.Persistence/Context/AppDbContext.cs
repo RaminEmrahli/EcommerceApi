@@ -27,9 +27,9 @@ namespace Ecommerce.Persistence.Context
         public DbSet<ProductCategory> ProductCategories { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
-
     }
 }

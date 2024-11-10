@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Persistence", "In
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Api", "Presentation\Ecommerce.Api\Ecommerce.Api.csproj", "{A0DCB280-5DC3-48A0-A8A2-E2D817BF8EF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Application", "Core\Ecommerce.Application\Ecommerce.Application.csproj", "{6C49741B-B13D-41F8-B807-42A17CF75329}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Application", "Core\Ecommerce.Application\Ecommerce.Application.csproj", "{6C49741B-B13D-41F8-B807-42A17CF75329}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceApi.Mapper", "EcommerceApi.Mapper\EcommerceApi.Mapper.csproj", "{7690055F-77C3-4947-95BC-7D41EFB52409}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{6C49741B-B13D-41F8-B807-42A17CF75329}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C49741B-B13D-41F8-B807-42A17CF75329}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C49741B-B13D-41F8-B807-42A17CF75329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7690055F-77C3-4947-95BC-7D41EFB52409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7690055F-77C3-4947-95BC-7D41EFB52409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7690055F-77C3-4947-95BC-7D41EFB52409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7690055F-77C3-4947-95BC-7D41EFB52409}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{C6228366-D6F8-423A-B7B5-4DD2BEF63123} = {4B4AB845-F5DC-4D8A-AD1B-704048BFFDA0}
 		{A0DCB280-5DC3-48A0-A8A2-E2D817BF8EF0} = {3D3D6C45-58DA-4FD7-8E5A-C526AEE54436}
 		{6C49741B-B13D-41F8-B807-42A17CF75329} = {9C5B3DCB-7DFA-45AE-86E6-129563B2F89D}
+		{7690055F-77C3-4947-95BC-7D41EFB52409} = {9C5B3DCB-7DFA-45AE-86E6-129563B2F89D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFFF2510-01B1-4787-BAD4-0FF6C778F5A4}
