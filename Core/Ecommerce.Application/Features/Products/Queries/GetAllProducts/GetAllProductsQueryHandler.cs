@@ -24,7 +24,8 @@ namespace Ecommerce.Application.Features.Products.Queries.GetAllProducts
             var map = mapper.Map<GetAllProductsQueryResponse, Product>(products);
             foreach (var item in map)
                 item.Price -= (item.Price * item.Discount / 100);
-            return map;
+            //return map;
+            throw new Exception("xeta");
         }
     }
 }

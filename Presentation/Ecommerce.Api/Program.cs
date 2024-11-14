@@ -1,4 +1,5 @@
 using Ecommerce.Application;
+using Ecommerce.Application.Exceptions;
 using Ecommerce.Persistence;
 using EcommerceApi.Mapper;
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +22,6 @@ builder.Services.AddApplication();
 builder.Services.AddCustomMapper();
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -29,8 +29,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.ConfigureExceptionHandlingMiddleware();
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
