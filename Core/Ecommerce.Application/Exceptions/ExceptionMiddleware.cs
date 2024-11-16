@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using SendGrid.Helpers.Errors.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +33,15 @@ namespace Ecommerce.Application.Exceptions
                 exception.Message,
                 exception.InnerException?.ToString(),
             };
+
+            if (exception.GetType() == typeof(ValidationException))
+            {
+                return httpContext.Response.WriteAsync(new ExceptionModel
+                {
+                    Errors = ((ValidationException)exception).Errors.Select(x=>x.ErrorMessage),
+                    StatusCode = statusCode
+                }.ToString());
+            }
 
             return httpContext.Response.WriteAsync(new ExceptionModel
             {
