@@ -1,4 +1,5 @@
-﻿using Ecommerce.Application.Interfaces.UnitOfWorks;
+﻿using Ecommerce.Application.Features.Products.Rules;
+using Ecommerce.Application.Interfaces.UnitOfWorks;
 using Ecommerce.Domain.Entities;
 using MediatR;
 using System;
@@ -12,16 +13,21 @@ namespace Ecommerce.Application.Features.Products.Command.CreateProduct
     internal class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
+        private readonly ProductRules productRules;
 
-        public CreateProductCommandHandler(IUnitOfWork unitOfWork)
+        public CreateProductCommandHandler(IUnitOfWork unitOfWork,ProductRules productRules)
         {
             this.unitOfWork = unitOfWork;
+            this.productRules = productRules;
         }
         public async Task<Unit> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
-            Product product= new(request.Title,request.Description,request.BrandId,request.Price,request.Discount);
+            IList<Product> products = await unitOfWork.GetReadRepository<Product>().GetAllAsync();
+            await productRules.ProductTitleMustNotBeSame(products, request.Title);
+            
+            Product product = new(request.Title,request.Description,request.BrandId,request.Price,request.Discount);
             await unitOfWork.GetWriteRepository<Product>().AddAsync(product);
-
+            
             if(await unitOfWork.SaveAsync() > 0)
             {
                 foreach(var categoryId in request.CategoryIds)

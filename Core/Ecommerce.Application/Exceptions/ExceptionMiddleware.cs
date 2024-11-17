@@ -30,15 +30,14 @@ namespace Ecommerce.Application.Exceptions
             httpContext.Response.StatusCode = statusCode;
             List<string> errors = new()
             {
-                exception.Message,
-                exception.InnerException?.ToString(),
+                $"Xeta mesaji : {exception.Message}"
             };
 
             if (exception.GetType() == typeof(ValidationException))
             {
                 return httpContext.Response.WriteAsync(new ExceptionModel
                 {
-                    Errors = ((ValidationException)exception).Errors.Select(x=>x.ErrorMessage),
+                    Errors = ((ValidationException)exception).Errors.Select(x => x.ErrorMessage),
                     StatusCode = statusCode
                 }.ToString());
             }
