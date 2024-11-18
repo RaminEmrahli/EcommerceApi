@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Persistence.Context
 {
-    public class AppDbContext : DbContext 
+    public class AppDbContext : IdentityDbContext<User,Role,Guid> 
     {
         public AppDbContext()
         {
@@ -27,7 +28,6 @@ namespace Ecommerce.Persistence.Context
         public DbSet<ProductCategory> ProductCategories { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
