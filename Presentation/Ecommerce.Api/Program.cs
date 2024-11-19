@@ -2,6 +2,7 @@ using Ecommerce.Application;
 using Ecommerce.Application.Exceptions;
 using Ecommerce.Persistence;
 using EcommerceApi.Mapper;
+using Ecommerce.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -19,6 +20,7 @@ builder.Configuration.SetBasePath(env.ContentRootPath)
 
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddCustomMapper();
 
 var app = builder.Build();
