@@ -27,7 +27,7 @@ namespace Ecommerce.Infrastructure.Tokens
 
         public async Task<JwtSecurityToken> CreateToken(User user, IList<string> roles)
         {
-            var claims=new List<Claim>()
+            var claims = new List<Claim>()
             {
                 new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
@@ -38,7 +38,7 @@ namespace Ecommerce.Infrastructure.Tokens
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSettings.Secret));
-            
+
             var token = new JwtSecurityToken(
                 issuer: tokenSettings.Issuer,
                 audience: tokenSettings.Auidience,
@@ -49,18 +49,37 @@ namespace Ecommerce.Infrastructure.Tokens
 
             await userManager.AddClaimsAsync(user, claims);
             return token;
-            
-                
+
+
         }
 
         public string GenerateRefreshToken()
         {
-            throw new NotImplementedException();
+            var randomNumber = new byte[64];
+            var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(randomNumber);
+            return Convert.ToBase64String(randomNumber);
         }
 
-        public ClaimsPrincipal? GetPrincipialFromExpiredToken()
+        public ClaimsPrincipal? GetPrincipialFromExpiredToken(string? token)
         {
-            throw new NotImplementedException();
+            TokenValidationParameters validationParameters = new()
+            {
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateIssuerSigningKey = false,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSettings.Secret)),
+                ValidateLifetime = false,
+            };
+            JwtSecurityTokenHandler tokenHandler = new();
+            var principial = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken securityToken);
+            if (securityToken is not JwtSecurityToken jwtSecurityToken
+                ||
+                jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+                {
+                throw new SecurityTokenExpiredException("Couldn't find token");
+            }
+            return principial;
         }
     }
 }
