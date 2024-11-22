@@ -1,7 +1,9 @@
-﻿using Ecommerce.Application.Interfaces.AutoMapper;
+﻿using Ecommerce.Application.Bases;
+using Ecommerce.Application.Interfaces.AutoMapper;
 using Ecommerce.Application.Interfaces.UnitOfWorks;
 using Ecommerce.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +12,12 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Application.Features.Products.Command.UpdateProduct
 {
-    internal class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandRequest,Unit>
+    internal class UpdateProductCommandHandler : BaseHandler,IRequestHandler<UpdateProductCommandRequest,Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
-
-        public UpdateProductCommandHandler(IUnitOfWork unitOfWork,IMapper mapper)
+        public UpdateProductCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
-            this.mapper = mapper;
         }
+
         public async Task<Unit> Handle(UpdateProductCommandRequest request, CancellationToken cancellationToken)
         {
             var product = await unitOfWork.GetReadRepository<Product>().GetAsync(x => x.Id == request.Id && !x.IsDeleted);

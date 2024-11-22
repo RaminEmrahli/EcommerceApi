@@ -39,7 +39,7 @@ namespace Ecommerce.Application.Features.Products.Command.UpdateProduct
             RuleFor(x => x.CategoryIds).
                 NotEmpty().
                 Must(categories => categories.Any()).
-                WithName("Cateqoriyalar");
+                WithName("Kateqoriyalar");
 
         }
     }

@@ -30,12 +30,12 @@ namespace Ecommerce.Application.Features.Products.Command.CreateProduct
 
             RuleFor(x => x.Price).
                 GreaterThan(0).
-                WithName("Qiymet");
+                WithName("Qiymət");
 
             RuleFor(x => x.CategoryIds).
                 NotEmpty().
                 Must(categories => categories.Any()).
-                WithName("Cateqoriyalar");
+                WithName("Kateqoriyalar");
         }
     }
 }

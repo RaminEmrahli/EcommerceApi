@@ -1,7 +1,10 @@
-﻿using Ecommerce.Application.Features.Products.Rules;
+﻿using Ecommerce.Application.Bases;
+using Ecommerce.Application.Features.Products.Rules;
+using Ecommerce.Application.Interfaces.AutoMapper;
 using Ecommerce.Application.Interfaces.UnitOfWorks;
 using Ecommerce.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +13,14 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Application.Features.Products.Command.CreateProduct
 {
-    internal class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest,Unit>
+    internal class CreateProductCommandHandler : BaseHandler,IRequestHandler<CreateProductCommandRequest,Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
         private readonly ProductRules productRules;
-
-        public CreateProductCommandHandler(IUnitOfWork unitOfWork,ProductRules productRules)
+        public CreateProductCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
             this.productRules = productRules;
         }
+
         public async Task<Unit> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
             IList<Product> products = await unitOfWork.GetReadRepository<Product>().GetAllAsync();
