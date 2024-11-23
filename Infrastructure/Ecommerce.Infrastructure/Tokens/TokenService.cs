@@ -19,10 +19,10 @@ namespace Ecommerce.Infrastructure.Tokens
     {
         private readonly UserManager<User> userManager;
         private readonly TokenSettings tokenSettings;
-        public TokenService(IOptions<TokenSettings> options, UserManager<User> user)
+        public TokenService(IOptions<TokenSettings> options, UserManager<User> userManager)
         {
             tokenSettings = options.Value;
-            this.userManager = user;
+            this.userManager = userManager;
         }
 
         public async Task<JwtSecurityToken> CreateToken(User user, IList<string> roles)

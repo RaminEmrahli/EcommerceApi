@@ -23,7 +23,7 @@ namespace Ecommerce.Infrastructure
             {
                 opt.DefaultAuthenticateScheme=JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(opt =>
+            }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,opt =>
             {
                 opt.SaveToken = true;
                 opt.TokenValidationParameters = new TokenValidationParameters
