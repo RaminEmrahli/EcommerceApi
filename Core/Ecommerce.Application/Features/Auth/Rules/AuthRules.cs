@@ -27,5 +27,10 @@ namespace Ecommerce.Application.Features.Auth.Rules
             return Task.CompletedTask;
 
         }
+
+        internal async Task EmailShouldBeValid(User? user)
+        {
+            if(user is null)  throw new EmailShouldBeValidException();
+        }
     }
 }
