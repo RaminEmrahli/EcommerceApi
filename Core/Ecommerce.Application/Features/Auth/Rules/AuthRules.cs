@@ -21,5 +21,11 @@ namespace Ecommerce.Application.Features.Auth.Rules
             if(user is null || !checkPassword) throw new EmailOrPasswordShouldNotBeInvalidException();
             return Task.CompletedTask;
         }
+        public Task RefreshTokenShouldNotBeExpired(DateTime? refreshTokenExpiryTime)
+        {
+            if (refreshTokenExpiryTime <= DateTime.Now) throw new RefreshTokenShouldNotBeExpiredException();
+            return Task.CompletedTask;
+
+        }
     }
 }

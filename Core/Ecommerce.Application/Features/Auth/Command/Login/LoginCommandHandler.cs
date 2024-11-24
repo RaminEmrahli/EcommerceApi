@@ -42,7 +42,7 @@ namespace Ecommerce.Application.Features.Auth.Command.Login
             
             _ = int.TryParse(configuration["JWT:RefreshTokenValidityInDays"], out int refreshTokenValidityInDays);
             
-            user.RefreshToken= refreshToken;
+            user.RefreshToken = refreshToken;
             user.RefreshTokenExpiryTime= DateTime.Now.AddDays(refreshTokenValidityInDays);
 
             await userManager.UpdateAsync(user);
