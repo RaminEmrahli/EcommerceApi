@@ -23,7 +23,7 @@ namespace Ecommerce.Persistence.Repositories
             await Table.AddAsync(entity); 
         }
 
-        public async Task AddRangeAsync(T entities)
+        public async Task AddRangeAsync(IList<T> entities)
         {
             await Table.AddRangeAsync(entities);
         }

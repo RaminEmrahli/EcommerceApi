@@ -24,7 +24,7 @@ namespace Ecommerce.Infrastructure.RedisCache
         }
         public async Task<T> GetAsync<T>(string key)
         {
-            var value= await database.StringGetAsync(key);
+            var value = await database.StringGetAsync(key);
             if (value.HasValue)
             {
                 return JsonConvert.DeserializeObject<T>(value);

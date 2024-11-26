@@ -8,7 +8,7 @@ namespace Ecommerce.Application.Interfaces.RedisCache
 {
     public interface ICacheableQuery
     {
-        public string CacheKey { get; set; }
-        public double CacheTime { get; set; }
+        string CacheKey { get;}
+        double CacheTime { get; }
     }
 }
