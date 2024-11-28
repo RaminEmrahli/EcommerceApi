@@ -30,7 +30,7 @@ namespace Ecommerce.Application.Behaviours
                     return cachedData;
                 }
                 var response = await next();
-                if(response is null)
+                if(response is not null)
                 {
                     await redisCacheService.SetAsync<TResponse>(cacheKey,response,DateTime.Now.AddMinutes(cacheTime));
                     return response;

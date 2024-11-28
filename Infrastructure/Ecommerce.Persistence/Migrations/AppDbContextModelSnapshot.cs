@@ -43,7 +43,7 @@ namespace Ecommerce.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands");
+                    b.ToTable("Brands", (string)null);
 
                     b.HasData(
                         new
@@ -95,7 +95,7 @@ namespace Ecommerce.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -165,7 +165,7 @@ namespace Ecommerce.Persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Details");
+                    b.ToTable("Details", (string)null);
 
                     b.HasData(
                         new
@@ -232,7 +232,7 @@ namespace Ecommerce.Persistence.Migrations
 
                     b.HasIndex("BrandId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
@@ -285,7 +285,7 @@ namespace Ecommerce.Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductCategories");
+                    b.ToTable("ProductCategories", (string)null);
                 });
 
             modelBuilder.Entity("Ecommerce.Domain.Entities.Role", b =>

@@ -21,7 +21,7 @@ namespace Ecommerce.Api.Controllers
             await mediator.Send(request);
             return Ok(StatusCodes.Status201Created);
         } 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var response = await mediator.Send(new GetAllBrandsQueryRequest());
